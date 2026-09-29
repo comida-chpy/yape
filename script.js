@@ -8,6 +8,39 @@ const displayAmount = document.getElementById('displayAmount');
 const statusTime = document.getElementById('statusTime');
 const receiptDate = document.getElementById('receiptDate');
 const receiptTime = document.getElementById('receiptTime');
+const fullscreenToggle = document.getElementById('fullscreenToggle');
+
+function updateFullscreenButton() {
+  if (!fullscreenToggle) return;
+
+  const isFullscreen = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+  const label = isFullscreen ? 'Salir de pantalla completa' : 'Activar pantalla completa';
+  fullscreenToggle.setAttribute('aria-label', label);
+  fullscreenToggle.title = label;
+}
+
+if (fullscreenToggle) {
+  fullscreenToggle.addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      } else if (document.documentElement.requestFullscreen) {
+        await document.documentElement.requestFullscreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      }
+    } catch {
+      fullscreenToggle.setAttribute('aria-label', 'Pantalla completa no disponible en este navegador');
+    }
+  });
+
+  document.addEventListener('fullscreenchange', updateFullscreenButton);
+  document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+}
 
 function formatTopClock(date) {
   const hours = date.getHours();

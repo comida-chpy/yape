@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Yape Mockup</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +18,11 @@
           <span class="wifi">◌</span>
           <span class="battery">▣</span>
           <span class="battery-level">59</span>
+          <button class="fullscreen-toggle" id="fullscreenToggle" type="button" aria-label="Activar pantalla completa" title="Activar pantalla completa">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -43,7 +48,10 @@
 
         <div class="meta-row">
           <div class="meta-item">
-            <span class="meta-icon">🗓</span>
+            <svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3.5" y="5" width="17" height="16" rx="2" />
+              <path d="M7.5 3v4M16.5 3v4M3.5 9.5h17" />
+            </svg>
             <span id="receiptDate">29 set. 2026</span>
           </div>
           <div class="meta-item">
