@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yape Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="status-bar">
+        <div class="time" id="statusTime">7:58</div>
+        <div class="status-icons" aria-label="estado">
+          <span class="signal signal--one">◔</span>
+          <span class="wifi">◌</span>
+          <span class="battery">▣</span>
+          <span class="battery-level">59</span>
+        </div>
+      </div>
+
+      <header class="hero-header">
+        <img class="hero-art" src="img/jose.png" alt="Ilustración de José Quiñones con el check de confirmación" />
+      </header>
+
+      <main class="receipt-card">
+        <div class="receipt-top">
+          <h1>¡Yapeaste!</h1>
+          <button class="share-btn" type="button">
+            <span class="share-icon">⇄</span>
+            Compartir
+          </button>
+        </div>
+
+        <div class="amount-row">
+          <span class="currency">S/</span>
+          <span class="amount" id="displayAmount">2</span>
+        </div>
+
+        <div class="user-name"><span id="displayName">J**el A****a</span><span class="asterisk">*</span></div>
+
+        <div class="meta-row">
+          <div class="meta-item">
+            <span class="meta-icon">🗓</span>
+            <span id="receiptDate">29 set. 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-icon">◔</span>
+            <span id="receiptTime">07:46 a. m.</span>
+          </div>
+        </div>
+
+        <div class="security-row">
+          <div class="security-label">CÓDIGO DE SEGURIDAD</div>
+          <div class="security-info">i</div>
+          <div class="pin-boxes">
+            <span>9</span>
+            <span>1</span>
+            <span>3</span>
+          </div>
+        </div>
+
+        <div class="transaction-details">
+          <div class="detail-row">
+            <span class="label">Nro. de celular</span>
+            <span class="value" id="displayPhone">*** *** 634</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Destino</span>
+            <span class="value">Yape</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Nro. de operación</span>
+            <span class="value">01491913</span>
+          </div>
+        </div>
+      </main>
+
+      <section class="promo-section">
+        <div class="promo-title-row">
+          <h2>Más en Yape</h2>
+          <span class="new-pill">Nuevo</span>
+        </div>
+
+        <div class="promo-cards">
+          <article class="promo-product">
+            <div class="promo-image" aria-label="Promoción de comida"></div>
+            <div class="promo-caption">*Tiendas seleccionadas. Aplican TyC.</div>
+          </article>
+
+          <article class="promo-offer">
+            <div class="offer-text">
+              <div class="offer-percent">50%</div>
+              <div class="offer-label">DSCTO.</div>
+              <div class="offer-copy">en platos a<br />la carta</div>
+            </div>
+            <button type="button">Conoce más</button>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

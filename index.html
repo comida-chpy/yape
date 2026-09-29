@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yape - Datos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="setup-body">
+    <main class="setup-page">
+      <div class="setup-card">
+        <p class="setup-logo">Yape</p>
+        <h1>Ingresa tus datos</h1>
+
+        <form id="editForm">
+          <label class="field">
+            <span>Nombre</span>
+            <input id="nameInput" type="text" value="Jonel Alania" maxlength="30" required />
+          </label>
+
+          <label class="field">
+            <span>Número</span>
+            <input id="phoneInput" type="tel" value="*** *** 634" maxlength="15" required />
+          </label>
+
+          <label class="field">
+            <span>Monto</span>
+            <input id="amountInput" type="number" value="2" min="1" step="0.01" required />
+          </label>
+
+          <button type="submit" class="primary-btn">Continuar</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
