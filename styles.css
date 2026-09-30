@@ -268,7 +268,7 @@ body {
 }
 
 .amount {
-  font-size: clamp(2.5rem, 5.2vw, 3.7rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.8;
   font-weight: 900;
   letter-spacing: -0.08em;
@@ -353,18 +353,18 @@ body {
 
 .pin-boxes {
   display: flex;
-  gap: 8px;
+  gap: 7px;
   justify-content: flex-end;
 }
 
 .pin-boxes span {
-  width: 48px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border-radius: 9px;
   background: rgba(36, 41, 48, 0.06);
   display: grid;
   place-items: center;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: -0.05em;
   color: #252930;

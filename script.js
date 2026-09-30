@@ -9,6 +9,25 @@ const statusTime = document.getElementById('statusTime');
 const receiptDate = document.getElementById('receiptDate');
 const receiptTime = document.getElementById('receiptTime');
 const fullscreenToggle = document.getElementById('fullscreenToggle');
+const securityDigits = document.querySelectorAll('.pin-boxes span');
+
+function createSecurityCode() {
+  return String(Math.floor(Math.random() * 1000)).padStart(3, '0');
+}
+
+function showSecurityCode(code) {
+  securityDigits.forEach((digit, index) => {
+    digit.textContent = code[index];
+  });
+}
+
+let securityCode = createSecurityCode();
+
+if (phoneInput) {
+  phoneInput.addEventListener('input', () => {
+    securityCode = createSecurityCode();
+  });
+}
 
 function updateFullscreenButton() {
   if (!fullscreenToggle) return;
@@ -115,6 +134,7 @@ if (editForm) {
     localStorage.setItem('yapeName', newName);
     localStorage.setItem('yapePhone', newPhone);
     localStorage.setItem('yapeAmount', newAmount);
+    localStorage.setItem('yapeSecurityCode', securityCode);
 
     window.location.href = 'yape.html';
   });
@@ -124,6 +144,7 @@ if (displayName || displayPhone || displayAmount) {
   const savedName = localStorage.getItem('yapeName') || 'Jonel Alania';
   const savedPhone = localStorage.getItem('yapePhone') || '*** *** 634';
   const savedAmount = localStorage.getItem('yapeAmount') || '2';
+  const savedSecurityCode = localStorage.getItem('yapeSecurityCode') || createSecurityCode();
 
   if (displayName) {
     displayName.textContent = maskName(savedName);
@@ -136,4 +157,6 @@ if (displayName || displayPhone || displayAmount) {
   if (displayAmount) {
     displayAmount.textContent = savedAmount;
   }
+
+  showSecurityCode(savedSecurityCode);
 }
