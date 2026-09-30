@@ -5,6 +5,7 @@ const amountInput = document.getElementById('amountInput');
 const displayName = document.getElementById('displayName');
 const displayPhone = document.getElementById('displayPhone');
 const displayAmount = document.getElementById('displayAmount');
+const displayOperation = document.getElementById('displayOperation');
 const statusTime = document.getElementById('statusTime');
 const receiptDate = document.getElementById('receiptDate');
 const receiptTime = document.getElementById('receiptTime');
@@ -13,6 +14,11 @@ const securityDigits = document.querySelectorAll('.pin-boxes span');
 
 function createSecurityCode() {
   return String(Math.floor(Math.random() * 1000)).padStart(3, '0');
+}
+
+function createOperationNumber() {
+  const randomDigits = String(Math.floor(Math.random() * 10_000_000)).padStart(7, '0');
+  return `0${randomDigits}`;
 }
 
 function showSecurityCode(code) {
@@ -100,27 +106,22 @@ updateDateTime();
 setInterval(updateDateTime, 1000);
 
 function maskName(name) {
-  if (!name) return 'Jonel A**a';
+  const cleanName = String(name || '').replace(/\*+/g, '').trim();
+  if (!cleanName) return 'Jonel Ala*';
 
-  const parts = name.split(' ');
+  const parts = cleanName.split(/\s+/);
   const firstName = parts[0] || '';
   const lastName = parts.slice(1).join(' ') || '';
 
   if (!lastName) return firstName;
 
-  const surnameLength = lastName.length;
-  const hiddenCount = Math.max(1, Math.ceil(surnameLength / 2));
-  const visibleCount = surnameLength - hiddenCount;
-  const masked = '*'.repeat(hiddenCount);
-  const visible = lastName.slice(0, visibleCount);
-
-  return `${firstName} ${visible}${masked}`;
+  return `${firstName} ${lastName.slice(0, 3)}*`;
 }
 
 function maskPhone(phone) {
   const digits = String(phone).replace(/\D/g, '');
-  if (digits.length <= 3) return digits;
-  return `*** *** ${digits.slice(-3)}`;
+  const visibleDigits = digits.slice(-3).padStart(3, '*');
+  return `*** *** ${visibleDigits}`;
 }
 
 if (editForm) {
@@ -130,21 +131,28 @@ if (editForm) {
     const newName = nameInput.value.trim() || 'Jonel Alania';
     const newPhone = phoneInput.value.trim() || '*** *** 634';
     const newAmount = amountInput.value.trim() || '2';
+    const newOperationNumber = createOperationNumber();
 
     localStorage.setItem('yapeName', newName);
     localStorage.setItem('yapePhone', newPhone);
     localStorage.setItem('yapeAmount', newAmount);
     localStorage.setItem('yapeSecurityCode', securityCode);
+    localStorage.setItem('yapeOperationNumber', newOperationNumber);
 
     window.location.href = 'yape.html';
   });
 }
 
-if (displayName || displayPhone || displayAmount) {
+if (displayName || displayPhone || displayAmount || displayOperation) {
   const savedName = localStorage.getItem('yapeName') || 'Jonel Alania';
   const savedPhone = localStorage.getItem('yapePhone') || '*** *** 634';
   const savedAmount = localStorage.getItem('yapeAmount') || '2';
   const savedSecurityCode = localStorage.getItem('yapeSecurityCode') || createSecurityCode();
+  const savedOperationNumber = localStorage.getItem('yapeOperationNumber') || createOperationNumber();
+
+  if (!localStorage.getItem('yapeOperationNumber')) {
+    localStorage.setItem('yapeOperationNumber', savedOperationNumber);
+  }
 
   if (displayName) {
     displayName.textContent = maskName(savedName);
@@ -156,6 +164,10 @@ if (displayName || displayPhone || displayAmount) {
 
   if (displayAmount) {
     displayAmount.textContent = savedAmount;
+  }
+
+  if (displayOperation) {
+    displayOperation.textContent = savedOperationNumber;
   }
 
   showSecurityCode(savedSecurityCode);

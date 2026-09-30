@@ -228,6 +228,8 @@ body {
   line-height: 1;
   letter-spacing: -0.06em;
   color: #531c7d;
+  transform: scale(0.96);
+  transform-origin: left center;
 }
 
 .share-btn {
@@ -245,9 +247,13 @@ body {
 }
 
 .share-icon {
-  display: inline-block;
-  transform: scaleX(-1) rotate(18deg);
-  font-size: 1.35rem;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .amount-row {
@@ -264,7 +270,8 @@ body {
   font-weight: 800;
   color: #1d1d1f;
   letter-spacing: -0.08em;
-  transform: translateY(-0.18em);
+  transform: translateY(-0.18em) scale(0.96);
+  transform-origin: left bottom;
 }
 
 .amount {
@@ -273,7 +280,8 @@ body {
   font-weight: 900;
   letter-spacing: -0.08em;
   color: #1d1d1f;
-  transform: translateY(-0.06em);
+  transform: translateY(-0.06em) scale(0.96);
+  transform-origin: left bottom;
 }
 
 .user-name {
@@ -282,6 +290,8 @@ body {
   letter-spacing: -0.05em;
   color: #1a1d20;
   margin-bottom: 10px;
+  transform: scale(0.96);
+  transform-origin: left top;
 }
 
 .asterisk {
@@ -324,10 +334,10 @@ body {
   grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: 14px;
-  padding: 18px 0 12px;
+  padding: 12px 0 8px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 .security-label {
@@ -371,7 +381,7 @@ body {
 }
 
 .transaction-details {
-  padding-top: 18px;
+  padding-top: 14px;
 }
 
 .detail-row {
